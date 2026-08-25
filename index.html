@@ -7,36 +7,38 @@
 <title>Mission 1 Labs QR</title>
 <style>
 html,body{background:#fff;color:#111;margin:0;font-family:system-ui,sans-serif;color-scheme:only light}
-body{max-width:520px;margin:0 auto;padding:1rem 1rem 3rem}
-h1{font-size:1.2rem;margin:0 0 .5rem}
-.note{background:#fff8e6;border:1px solid #e6d59a;border-radius:8px;padding:.75rem .9rem;font-size:.92rem;line-height:1.4}
-.note ol{margin:.4rem 0 0;padding-left:1.2rem}
-.row{display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0}
-button{font:inherit;padding:.45rem .7rem;border:1px solid #ccc;background:#f4f4f4;border-radius:6px}
+body{padding:.6rem .6rem 2rem}
+h1{font-size:1.05rem;margin:0 0 .35rem}
+.hint{font-size:.85rem;color:#444;margin:0 0 .5rem}
+.row{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 .5rem}
+button{font:inherit;padding:.4rem .65rem;border:1px solid #ccc;background:#f4f4f4;border-radius:6px}
 button[aria-pressed="true"]{background:#111;color:#fff;border-color:#111}
-#stage{background:#fff;padding:20px;display:flex;justify-content:center}
-#qrcode{width:min(92vw,400px);height:min(92vw,400px);background:#fff}
-#qrcode img,#qrcode canvas{width:100%!important;height:auto!important;image-rendering:pixelated;border:0;border-radius:0;filter:none}
-#label{text-align:center;font-weight:600;margin:.6rem 0 .2rem}
-#cmd{font-size:.7rem;word-break:break-all;color:#666;text-align:center}
+#label{text-align:center;font-weight:600;margin:.35rem 0}
+#stage{background:#fff;display:flex;justify-content:center;padding:8px}
+#qrcode{background:#fff}
+#qrcode img,#qrcode canvas{display:block;image-rendering:pixelated;border:0;border-radius:0;filter:none}
+#cmd{font-size:.65rem;word-break:break-all;color:#888;text-align:center;margin:.5rem .4rem 0}
+details{margin:1rem .2rem 0;font-size:.88rem;line-height:1.4}
+details ol{margin:.35rem 0 0;padding-left:1.2rem}
 </style>
 <script src="https://gopro.github.io/labs/qrcodeborder.js"></script>
 </head><body>
 <h1>Mission 1 Pro — scan one QR</h1>
-<div class="note">
-<strong>If the camera says “timecode could not be synced”</strong> it did <em>not</em> read a Labs command (stock Mission 1 treats every QR as Quik time-sync).
-<ol>
-<li>Rear <strong>LCD on</strong> (not the front screen only).</li>
-<li>Swipe to a <strong>Video</strong> Mode — not Photo / Nightlapse Photo.</li>
-<li>Phone: light mode, brightness up. Fill the camera with this one QR.</li>
-<li>Success is a <strong>checkmark</strong>. Then try the test button first.</li>
-<li>If the test button also shows timecode: reinstall Labs — <a href="https://gopro.github.io/labs/">gopro.github.io/labs</a> (Mission 1 Pro).</li>
-</ol>
-</div>
+<p class="hint">Rear LCD on · Video Mode · phone brightness up. Hold far enough for focus; this QR fills the screen.</p>
 <p class="row" id="btns"></p>
 <div id="label"></div>
 <div id="stage"><div id="qrcode"></div></div>
 <p id="cmd"></p>
+<details>
+<summary>Timecode error?</summary>
+<p>Stock Mission 1 treats a failed QR as Quik time-sync. Labs did not read it.</p>
+<ol>
+<li>Rear <strong>LCD on</strong> (not the front screen only).</li>
+<li>Swipe to a <strong>Video</strong> Mode — not Photo / Nightlapse Photo.</li>
+<li>Success is a <strong>checkmark</strong>. Tap <strong>TEST Labs</strong> first.</li>
+<li>If TEST also shows timecode: reinstall Labs — <a href="https://gopro.github.io/labs/">gopro.github.io/labs</a>.</li>
+</ol>
+</details>
 <script>
 const PRESETS = {
   "TEST Labs": {cmd:'oB7', hint:'LCD 70% — if this fails, Labs is not running'},
@@ -53,19 +55,27 @@ const PRESETS = {
 };
 const names = Object.keys(PRESETS);
 const box = document.getElementById('qrcode');
-let qr;
+let current = names[0];
+
+function qrPx() {
+  const w = window.innerWidth - 24;
+  const h = (window.visualViewport ? window.visualViewport.height : window.innerHeight) - 150;
+  return Math.max(420, Math.floor(Math.min(w, h)));
+}
+
 function show(name) {
+  current = name;
   const p = PRESETS[name];
+  const px = qrPx();
   document.getElementById('label').textContent = name + (p.hint ? ' — ' + p.hint : '');
   document.getElementById('cmd').textContent = p.cmd;
   document.querySelectorAll('#btns button').forEach(b => b.setAttribute('aria-pressed', b.dataset.name === name ? 'true' : 'false'));
-  if (!qr) {
-    qr = new QRCode(box, {text: p.cmd, width: 400, height: 400, correctLevel: QRCode.CorrectLevel.M});
-  } else {
-    qr.clear();
-    qr.makeCode(p.cmd);
-  }
+  box.replaceChildren();
+  box.style.width = px + 'px';
+  box.style.height = px + 'px';
+  new QRCode(box, {text: p.cmd, width: px, height: px, correctLevel: QRCode.CorrectLevel.M});
 }
+
 const row = document.getElementById('btns');
 names.forEach(name => {
   const b = document.createElement('button');
@@ -74,6 +84,7 @@ names.forEach(name => {
   b.onclick = () => show(name);
   row.appendChild(b);
 });
-show(names[0]);
+show(current);
+window.addEventListener('resize', () => show(current));
 </script>
 </body></html>
