@@ -1,84 +1,79 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"/>
+<html lang="en"><head>
+<meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="robots" content="noindex,nofollow"/>
-<title>Mission 1 Pro — Labs preset setup</title>
+<meta name="color-scheme" content="light only"/>
+<title>Mission 1 Labs QR</title>
 <style>
-:root{--fg:#111;--muted:#555;--line:#e5e5e5;--bg:#fafafa}
-body{font-family:system-ui,sans-serif;max-width:820px;margin:0 auto;padding:2rem 1.25rem 4rem;color:var(--fg);line-height:1.45}
-h1{font-size:1.5rem;margin:0 0 .5rem} h2{font-size:1.25rem;margin:0 0 .35rem} h2 small{color:var(--muted);font-weight:500}
-.brief{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;margin:1rem 0 2rem}
-.brief table{width:100%;border-collapse:collapse;margin-top:.75rem}
-.brief th,.brief td{text-align:left;padding:.35rem .4rem;border-bottom:1px solid var(--line);font-size:.95rem}
-section{border-top:1px solid var(--line);padding:1.75rem 0;break-inside:avoid}
-.when{color:var(--muted);margin:0 0 1rem}
-.layout{display:grid;grid-template-columns:280px 1fr;gap:1.25rem;align-items:start}
-@media(max-width:700px){.layout{grid-template-columns:1fr}}
-img{image-rendering:pixelated;background:#fff;border:1px solid var(--line);border-radius:8px}
-section table{width:100%;border-collapse:collapse;font-size:.92rem}
-section th{text-align:left;width:38%;color:var(--muted);font-weight:600;padding:.28rem .4rem;border-bottom:1px solid var(--line);vertical-align:top}
-section td{padding:.28rem .4rem;border-bottom:1px solid var(--line)}
-.cmd{font-size:.72rem;word-break:break-all;color:var(--muted);margin:.85rem 0 0}
-@media print{body{padding:0}section{page-break-inside:avoid}}
-</style></head><body>
-<h1>Mission 1 Pro — Labs preset setup</h1>
-<div class="brief">
-<p><strong>One-time:</strong> Labs → LCD on → scan each QR. Delete + rescan a preset after changes.</p>
-<p><strong>GP-Log2 vs HDR:</strong> they cannot run together. Day QRs set <strong>GP-Log2 + HLG off</strong>.</p>
-<p><strong>Leave-on:</strong> MOVE60 (stick / hand). When Fluid Pro AI is mounted → <strong>GIMBAL24</strong> + ND. Same 24p/180° as STEADY24; ISO 100 locked.</p>
-<p><strong>ND:</strong> M-Series ND8 / ND16 / ND32 / ND64 — gimbal + locked plates only. Never on MOVE60 or DRONE60.</p>
-<p><strong>NIGHTSTAR:</strong> Nightlapse <strong>Photo</strong> (Hero 11 style). Auto interval/shutter for dusk→dawn. Confirm camera shows photos, not Video.</p>
-<table><tr><th>Preset</th><th>When</th></tr>
-<tr><td>MOVE60</td><td>Stick / hand (leave-on)</td></tr>
-<tr><td>GIMBAL24</td><td>Fluid Pro AI + ND</td></tr>
-<tr><td>DRONE60</td><td>Drone (no ND this trip)</td></tr>
-<tr><td>STEADY24</td><td>Locked + ND</td></tr>
-<tr><td>NIGHTSTAR</td><td>Dusk–dawn stars (photos, Auto)</td></tr>
-</table></div>
-
-<section id="MOVE60">
-  <h2>MOVE60 <small>icon 3</small></h2>
-  <p class="when">Any movement — hike, bike, handheld, tilts, water</p>
-  <div class="layout">
-    <img src="data:image/png;base64,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" width="280" height="280" alt="MOVE60" />
-    <table><tr><th>Mode</th><td>Video</td></tr><tr><th>Resolution</th><td>4K 4:3</td></tr><tr><th>FPS</th><td>60</td></tr><tr><th>Lens</th><td>Wide</td></tr><tr><th>HyperSmooth</th><td>Off (Gyroflow)</td></tr><tr><th>Color</th><td>GP-Log2 · HDR/HLG off · 10-bit · Max bitrate</td></tr><tr><th>Shutter</th><td>High / Photo blur (bP)</td></tr><tr><th>ISO</th><td>Range 100–400</td></tr><tr><th>WB / EV</th><td>5500K · EV 0</td></tr><tr><th>Sharp / NR</th><td>Low / Low</td></tr><tr><th>ND</th><td>No</td></tr><tr><th>Gyroflow</th><td>Yes → export 16:9</td></tr></table>
-  </div>
-  <p class="cmd"><code>mVr4Tp60e0fWhH0cLd10bMi4bPw55x0sLdLoMPRES="3,MOVE60"</code></p>
-</section>
-<section id="GIMBAL24">
-  <h2>GIMBAL24 <small>icon 4</small></h2>
-  <p class="when">Fluid Pro AI gimbal — true cinema (24p · 180° · ND)</p>
-  <div class="layout">
-    <img src="data:image/png;base64,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" width="280" height="280" alt="GIMBAL24" />
-    <table><tr><th>Mode</th><td>Video</td></tr><tr><th>Resolution</th><td>4K 4:3</td></tr><tr><th>FPS</th><td>24</td></tr><tr><th>Lens</th><td>Wide</td></tr><tr><th>HyperSmooth</th><td>Off</td></tr><tr><th>Color</th><td>GP-Log2 · HDR/HLG off · 10-bit · Max bitrate</td></tr><tr><th>Shutter</th><td>180°</td></tr><tr><th>ISO</th><td>Fixed 100</td></tr><tr><th>WB / EV</th><td>5500K · EV 0</td></tr><tr><th>ND</th><td>Yes — ND8 overcast · ND16–32 sun · ND64 harsh midday</td></tr><tr><th>Gyroflow</th><td>Skip if gimbal is clean; light Gyroflow only if micro-shake</td></tr></table>
-  </div>
-  <p class="cmd"><code>mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="4,GIMBAL24"</code></p>
-</section>
-<section id="DRONE60">
-  <h2>DRONE60 <small>icon 27</small></h2>
-  <p class="when">Drone / aerial cinematic</p>
-  <div class="layout">
-    <img src="data:image/png;base64,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" width="280" height="280" alt="DRONE60" />
-    <table><tr><th>Mode</th><td>Video (same as MOVE60)</td></tr><tr><th>Resolution</th><td>4K 4:3</td></tr><tr><th>FPS</th><td>60</td></tr><tr><th>Lens</th><td>Wide</td></tr><tr><th>HyperSmooth</th><td>Off (Gyroflow)</td></tr><tr><th>Color</th><td>GP-Log2 · HDR/HLG off · 10-bit · Max bitrate</td></tr><tr><th>Shutter</th><td>High / Photo blur (bP)</td></tr><tr><th>ISO</th><td>Fixed 100</td></tr><tr><th>WB / EV</th><td>5500K · EV 0</td></tr><tr><th>GPS</th><td>On</td></tr><tr><th>ND</th><td>No</td></tr><tr><th>Gyroflow</th><td>Yes → export 16:9</td></tr></table>
-  </div>
-  <p class="cmd"><code>mVr4Tp60e0fWhH0cLd10bMi1M1bPw55x0sLdLg1oMPRES="27,DRONE60"</code></p>
-</section>
-<section id="STEADY24">
-  <h2>STEADY24 <small>icon 32</small></h2>
-  <p class="when">Tripod / locked — film blur</p>
-  <div class="layout">
-    <img src="data:image/png;base64,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" width="280" height="280" alt="STEADY24" />
-    <table><tr><th>Mode</th><td>Video</td></tr><tr><th>Resolution</th><td>4K 4:3</td></tr><tr><th>FPS</th><td>24</td></tr><tr><th>Lens</th><td>Wide</td></tr><tr><th>HyperSmooth</th><td>Off</td></tr><tr><th>Color</th><td>GP-Log2 · HDR/HLG off · 10-bit · Max bitrate</td></tr><tr><th>Shutter</th><td>180°</td></tr><tr><th>ISO</th><td>Fixed 100</td></tr><tr><th>WB / EV</th><td>5500K · EV 0</td></tr><tr><th>ND</th><td>Yes (sun: ~16–32)</td></tr><tr><th>Gyroflow</th><td>No — crop 16:9 in Resolve</td></tr></table>
-  </div>
-  <p class="cmd"><code>mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="32,STEADY24"</code></p>
-</section>
-<section id="NIGHTSTAR">
-  <h2>NIGHTSTAR <small>icon 29</small></h2>
-  <p class="when">Dusk → dawn stars — Nightlapse Photo (not video)</p>
-  <div class="layout">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgYAAAIGAQAAAAAHRHoNAAAD40lEQVR4nO1dS27jMAwl5QBdOjeYo7g3G8zN4qP0BvGygA0OREoynaaLaYwBIby3Ua0ohPVUguJHCgu9hi29KIAIEgzgwQAeDODBAB4M4CEODyQid/c4iGKlcW+IHpqGSWSNMIsECQrw0B8Pk2mkV7yF32vzXH1rZ5xZvAJIMICHeDxwhmoj0cx8oVFuxG9yp5nr2KGq6JIHX05/h58DEgzgoX8eROSDmeWTf2UVvZj5XKsx/S/v8C+ABAN46ImHy5O+SaqpHGRhItl4lN18nv4OCRIU4MEAHo66KaUlWq7TrTzxsI72p6poG1I6DWDSAB4M4OFcHmZ1N5mrbSy72BILUrdzktq51cHXU9/hFUCCATz0ZjfHQ15En7aqpW0zq03+TALOIkGCAjz0xANpLmSyVObNxWJ9RrMlPfULJfdZgPxmoNVMkNARD1TylOJwy/rXkp43G6fq+5gJRe1BrNVMkNARD9TsH2VV2/sPtvGgqdm06pPZ2wizSJCgAA9d8jDs5vNWjWmN9+TP5j36Q6P8YdoQC4q7mj8GJMTzN2l40njX0vuiBVZyG2EWCRIU4KFL3SS/i9XoT3E7vfo2m1qeoJuxVjNBQkc8kI/+FHjzWQxmif7kUG71PutRlQizSJCgAA+95TeXq6ph62vleblYL29jczO/y3ZZeBIeZMl+Z/1ChFkkSFCAh/5qD2YtLLjPuRRItbGUIFg9LQ2rNgfwsMaZRYIEBXjoNhZELqNSvE/nWurwlt9sW9sIs0iQoAAPPfqbZM5kjcU2TfVR2xYnKsEj6Ga01UyQ0KduUq390bo8X4lQQkKtgs9pKuxmpNVMkNARD1TvFhkOW1uXPDludFsOBXHagKuZIKEjHmgvjx0PivfNSB0CfzPoaiZI6IgHqrZx/bKL9RlNXx6U4UqHIswiQYICPPTGw2h3AmV4o6gq+sG/TQ3nVkF72PbGmcVrgAQDeIjDAx0L8jzaoc5jAXwBYkEBVzNBQkc8kD+4qfh6HMVfGl0Oh7kz2RFmkSBBAR76q9mjhnJ717bfvzfd2OqCxDprQdB2sbtMIswiQYICPPTHw2QmU22jXgz9Zk/Zw5zrNbWPjubJ7/AKIMEAHjo9I0buHFjLbz5GZv33FNjTBlrNBAld3x29XPO+VZWVc+X7JHn7ep9Zr5B2Re6nvUOCBAV4MICH73gYs9381M2s5lA4N8W06k8vfOovp7QrbMGkATwYwMPZdlOe/ebCfr070fyuJzZnLp1S77XFWhjAgwE8nF5PW3CM97jDYY+foZ72AfifNICHs3hg/Ka8Av9RBvBgAA8G8GAADwbwQIq/ZHkvJKDBwvIAAAAASUVORK5CYII=" width="280" height="280" alt="NIGHTSTAR" />
-    <table><tr><th>Mode</th><td>Nightlapse Photo only (like Hero 11) — not Motion/Speed 30X</td></tr><tr><th>Why Auto</th><td>Light changes hard dusk→dawn; Auto interval + shutter adapt</td></tr><tr><th>Interval</th><td>Auto</td></tr><tr><th>Shutter</th><td>Auto (lengthens when dark for visible stars)</td></tr><tr><th>ISO</th><td>Range up to 1600</td></tr><tr><th>Resolution</th><td>4K 4:3</td></tr><tr><th>Lens</th><td>Wide</td></tr><tr><th>Color</th><td>Natural</td></tr><tr><th>HLG HDR</th><td>Off</td></tr><tr><th>Bit depth / rate</th><td>10-bit · High</td></tr><tr><th>Sharp / Denoise</th><td>Low / Low</td></tr><tr><th>LEDs / power</th><td>Off / USB bank all night</td></tr><tr><th>In Resolve</th><td>Import stills · drop blown dusk/dawn frames · keep night</td></tr><tr><th>Tip</th><td>For max stars: start after dusk (astro twilight) if you can</td></tr></table>
-  </div>
-  <p class="cmd"><code>mNPr4TfWpeAcNhH0d10bHi16w40x0sLdLoD0oMPRES="29,NIGHTSTAR"</code></p>
-</section>
+html,body{background:#fff;color:#111;margin:0;font-family:system-ui,sans-serif;color-scheme:only light}
+body{max-width:520px;margin:0 auto;padding:1rem 1rem 3rem}
+h1{font-size:1.2rem;margin:0 0 .5rem}
+.note{background:#fff8e6;border:1px solid #e6d59a;border-radius:8px;padding:.75rem .9rem;font-size:.92rem;line-height:1.4}
+.note ol{margin:.4rem 0 0;padding-left:1.2rem}
+.row{display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0}
+button{font:inherit;padding:.45rem .7rem;border:1px solid #ccc;background:#f4f4f4;border-radius:6px}
+button[aria-pressed="true"]{background:#111;color:#fff;border-color:#111}
+#stage{background:#fff;padding:20px;display:flex;justify-content:center}
+#qrcode{width:min(92vw,400px);height:min(92vw,400px);background:#fff}
+#qrcode img,#qrcode canvas{width:100%!important;height:auto!important;image-rendering:pixelated;border:0;border-radius:0;filter:none}
+#label{text-align:center;font-weight:600;margin:.6rem 0 .2rem}
+#cmd{font-size:.7rem;word-break:break-all;color:#666;text-align:center}
+</style>
+<script src="https://gopro.github.io/labs/qrcodeborder.js"></script>
+</head><body>
+<h1>Mission 1 Pro — scan one QR</h1>
+<div class="note">
+<strong>If the camera says “timecode could not be synced”</strong> it did <em>not</em> read a Labs command (stock Mission 1 treats every QR as Quik time-sync).
+<ol>
+<li>Rear <strong>LCD on</strong> (not the front screen only).</li>
+<li>Swipe to a <strong>Video</strong> Mode — not Photo / Nightlapse Photo.</li>
+<li>Phone: light mode, brightness up. Fill the camera with this one QR.</li>
+<li>Success is a <strong>checkmark</strong>. Then try the test button first.</li>
+<li>If the test button also shows timecode: reinstall Labs — <a href="https://gopro.github.io/labs/">gopro.github.io/labs</a> (Mission 1 Pro).</li>
+</ol>
+</div>
+<p class="row" id="btns"></p>
+<div id="label"></div>
+<div id="stage"><div id="qrcode"></div></div>
+<p id="cmd"></p>
+<script>
+const PRESETS = {
+  "TEST Labs": {cmd:'oB7', hint:'LCD 70% — if this fails, Labs is not running'},
+  "MOVE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi4bPw55x0sLdLoMPRES="3,MOVE60"'},
+  "GIMBAL24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="4,GIMBAL24"'},
+  "DRONE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi1M1bPw55x0sLdLg1oMPRES="27,DRONE60"'},
+  "STEADY24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="32,STEADY24"'},
+  "NIGHTSTAR": {cmd:'mNPr4TfWpeAcNhH0d10bHi16w40x0sLdLoD0oMPRES="29,NIGHTSTAR"'},
+  "del MOVE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi4bPw55x0sLdLoMPRES="-1,MOVE60"'},
+  "del GIMBAL24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="-1,GIMBAL24"'},
+  "del DRONE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi1M1bPw55x0sLdLg1oMPRES="-1,DRONE60"'},
+  "del STEADY24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="-1,STEADY24"'},
+  "del NIGHTSTAR": {cmd:'mNPr4TfWpeAcNhH0d10bHi16w40x0sLdLoD0oMPRES="-1,NIGHTSTAR"'}
+};
+const names = Object.keys(PRESETS);
+const box = document.getElementById('qrcode');
+let qr;
+function show(name) {
+  const p = PRESETS[name];
+  document.getElementById('label').textContent = name + (p.hint ? ' — ' + p.hint : '');
+  document.getElementById('cmd').textContent = p.cmd;
+  document.querySelectorAll('#btns button').forEach(b => b.setAttribute('aria-pressed', b.dataset.name === name ? 'true' : 'false'));
+  if (!qr) {
+    qr = new QRCode(box, {text: p.cmd, width: 400, height: 400, correctLevel: QRCode.CorrectLevel.M});
+  } else {
+    qr.clear();
+    qr.makeCode(p.cmd);
+  }
+}
+const row = document.getElementById('btns');
+names.forEach(name => {
+  const b = document.createElement('button');
+  b.textContent = name;
+  b.dataset.name = name;
+  b.onclick = () => show(name);
+  row.appendChild(b);
+});
+show(names[0]);
+</script>
 </body></html>
