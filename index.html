@@ -24,7 +24,7 @@ details ol{margin:.35rem 0 0;padding-left:1.2rem}
 <script src="https://gopro.github.io/labs/qrcodeborder.js"></script>
 </head><body>
 <h1>Mission 1 Pro — scan one QR</h1>
-<p class="hint">Rear LCD on · Video Mode · phone brightness up. Hold far enough for focus; this QR fills the screen.</p>
+<p class="hint">Rear LCD on · Video Mode · brightness up. Same error on every QR means Labs firmware is missing — <a href="https://gopro.github.io/labs/control/set/?cmd=%22$FEAT=4%22">scan this official GoPro test QR</a>. If that also says timecode, reinstall Labs.</p>
 <p class="row" id="btns"></p>
 <div id="label"></div>
 <div id="stage"><div id="qrcode"></div></div>
@@ -41,7 +41,7 @@ details ol{margin:.35rem 0 0;padding-left:1.2rem}
 </details>
 <script>
 const PRESETS = {
-  "TEST Labs": {cmd:'oB7', hint:'LCD 70% — if this fails, Labs is not running'},
+  "TEST Labs": {cmd:'$FEAT=4', hint:'Shows Labs features 4s — if timecode, Labs is not installed'},
   "MOVE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi4bPw55x0sLdLoMPRES="3,MOVE60"'},
   "GIMBAL24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="4,GIMBAL24"'},
   "DRONE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi1M1bPw55x0sLdLg1oMPRES="27,DRONE60"'},
