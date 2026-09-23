@@ -24,7 +24,7 @@ details ol{margin:.35rem 0 0;padding-left:1.2rem}
 <script src="https://gopro.github.io/labs/qrcodeborder.js"></script>
 </head><body>
 <h1>Mission 1 Pro — scan one QR</h1>
-<p class="hint">Rear LCD on · Video Mode · brightness up. Order: <strong>TEST Labs</strong> → <strong>NR1</strong> → <strong>BITR300</strong> → reboot → delete old names → install presets. Same error on every QR means Labs firmware is missing — <a href="https://gopro.github.io/labs/control/set/?cmd=%22$FEAT=4%22">scan this official GoPro test QR</a>. If that also says timecode, reinstall Labs.</p>
+<p class="hint">Rear LCD on · stay in a <strong>Video</strong> mode (not Lapse / Nightlapse) when installing MOVE / CINE / DRONE. Order: <strong>TEST Labs</strong> → <strong>NR1</strong> → <strong>BITR300</strong> → reboot → delete old names → install presets. Same error on every QR means Labs firmware is missing — <a href="https://gopro.github.io/labs/control/set/?cmd=%22$FEAT=4%22">scan this official GoPro test QR</a>. If that also says timecode, reinstall Labs.</p>
 <p class="row" id="btns"></p>
 <div id="label"></div>
 <div id="stage"><div id="qrcode"></div></div>
@@ -50,18 +50,18 @@ const PRESETS = {
   "TEST Labs": {cmd:'$FEAT=4', hint:'Shows Labs features 4s — if timecode, Labs is not installed'},
   "NR1": {cmd:'*NR01=1', hint:'Permanent — NR 1/100, grade chroma in Resolve'},
   "BITR300": {cmd:'*BITR=300', hint:'Permanent — 300 Mb/s; SD must keep up'},
-  "MOVE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLdLtBoMPRES="3,MOVE60"'},
-  "CINE24": {cmd:'mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLdLtBoMPRES="4,CINE24"'},
-  "DRONE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLdLtBg1oMPRES="27,DRONE60"'},
-  "NIGHTSTAR": {cmd:'mNPr4TfWpeAcNhH0d10bHi16w40x0sLdLoD0oMPRES="29,NIGHTSTAR"'},
-  "del MOVE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLdLtBoMPRES="-1,MOVE60"'},
-  "del CINE24": {cmd:'mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLdLtBoMPRES="-1,CINE24"'},
-  "del DRONE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLdLtBg1oMPRES="-1,DRONE60"'},
-  "del NIGHTSTAR": {cmd:'mNPr4TfWpeAcNhH0d10bHi16w40x0sLdLoD0oMPRES="-1,NIGHTSTAR"'}
+  "MOVE60": {cmd:'mVoMPRES="3,MOVE60"mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLoN2tB'},
+  "CINE24": {cmd:'mVoMPRES="4,CINE24"mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLoN2tB'},
+  "DRONE60": {cmd:'mVoMPRES="27,DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1'},
+  "NIGHTSTAR": {cmd:'mNPoMPRES="29,NIGHTSTAR"mNPr4TfWpeAcNhH0d10bHi16w40x0sLoN2oD0'},
+  "del MOVE60": {cmd:'mVoMPRES="-1,MOVE60"mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLoN2tB'},
+  "del CINE24": {cmd:'mVoMPRES="-1,CINE24"mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLoN2tB'},
+  "del DRONE60": {cmd:'mVoMPRES="-1,DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1'},
+  "del NIGHTSTAR": {cmd:'mNPoMPRES="-1,NIGHTSTAR"mNPr4TfWpeAcNhH0d10bHi16w40x0sLoN2oD0'}
 };
 const LEGACY = {
-  "wipe GIMBAL24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="-1,GIMBAL24"', hint:'Legacy — now CINE24'},
-  "wipe STEADY24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="-1,STEADY24"', hint:'Legacy — now CINE24'}
+  "wipe GIMBAL24": {cmd:'mVoMPRES="-1,GIMBAL24"mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sL', hint:'Legacy — now CINE24'},
+  "wipe STEADY24": {cmd:'mVoMPRES="-1,STEADY24"mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sL', hint:'Legacy — now CINE24'}
 };
 const names = Object.keys(PRESETS);
 const box = document.getElementById('qrcode');
