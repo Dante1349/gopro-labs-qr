@@ -24,11 +24,16 @@ details ol{margin:.35rem 0 0;padding-left:1.2rem}
 <script src="https://gopro.github.io/labs/qrcodeborder.js"></script>
 </head><body>
 <h1>Mission 1 Pro — scan one QR</h1>
-<p class="hint">Rear LCD on · Video Mode · brightness up. Same error on every QR means Labs firmware is missing — <a href="https://gopro.github.io/labs/control/set/?cmd=%22$FEAT=4%22">scan this official GoPro test QR</a>. If that also says timecode, reinstall Labs.</p>
+<p class="hint">Rear LCD on · Video Mode · brightness up. Order: <strong>TEST Labs</strong> → <strong>NR1</strong> → <strong>BITR300</strong> → reboot → delete old names → install presets. Same error on every QR means Labs firmware is missing — <a href="https://gopro.github.io/labs/control/set/?cmd=%22$FEAT=4%22">scan this official GoPro test QR</a>. If that also says timecode, reinstall Labs.</p>
 <p class="row" id="btns"></p>
 <div id="label"></div>
 <div id="stage"><div id="qrcode"></div></div>
 <p id="cmd"></p>
+<details>
+<summary>Wipe leftover GIMBAL24 / STEADY24</summary>
+<p>Those names are gone — use <strong>CINE24</strong>. Only scan these if the old custom modes are still on the camera. Prefer Manage Modes → Delete.</p>
+<p class="row" id="legacy"></p>
+</details>
 <details>
 <summary>Timecode error?</summary>
 <p>Stock Mission 1 treats a failed QR as Quik time-sync. Labs did not read it.</p>
@@ -37,21 +42,26 @@ details ol{margin:.35rem 0 0;padding-left:1.2rem}
 <li>Swipe to a <strong>Video</strong> Mode — not Photo / Nightlapse Photo.</li>
 <li>Success is a <strong>checkmark</strong>. Tap <strong>TEST Labs</strong> first.</li>
 <li>If TEST also shows timecode: reinstall Labs — <a href="https://gopro.github.io/labs/">gopro.github.io/labs</a>.</li>
+<li>Do <strong>not Apply to All</strong> after Labs QRs.</li>
 </ol>
 </details>
 <script>
 const PRESETS = {
   "TEST Labs": {cmd:'$FEAT=4', hint:'Shows Labs features 4s — if timecode, Labs is not installed'},
-  "MOVE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi4bPw55x0sLdLoMPRES="3,MOVE60"'},
-  "GIMBAL24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="4,GIMBAL24"'},
-  "DRONE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi1M1bPw55x0sLdLg1oMPRES="27,DRONE60"'},
-  "STEADY24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="32,STEADY24"'},
+  "NR1": {cmd:'*NR01=1', hint:'Permanent — NR 1/100, grade chroma in Resolve'},
+  "BITR300": {cmd:'*BITR=300', hint:'Permanent — 300 Mb/s; SD must keep up'},
+  "MOVE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLdLtBoMPRES="3,MOVE60"'},
+  "CINE24": {cmd:'mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLdLtBoMPRES="4,CINE24"'},
+  "DRONE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLdLtBg1oMPRES="27,DRONE60"'},
   "NIGHTSTAR": {cmd:'mNPr4TfWpeAcNhH0d10bHi16w40x0sLdLoD0oMPRES="29,NIGHTSTAR"'},
-  "del MOVE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi4bPw55x0sLdLoMPRES="-1,MOVE60"'},
-  "del GIMBAL24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="-1,GIMBAL24"'},
-  "del DRONE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi1M1bPw55x0sLdLg1oMPRES="-1,DRONE60"'},
-  "del STEADY24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="-1,STEADY24"'},
+  "del MOVE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLdLtBoMPRES="-1,MOVE60"'},
+  "del CINE24": {cmd:'mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLdLtBoMPRES="-1,CINE24"'},
+  "del DRONE60": {cmd:'mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLdLtBg1oMPRES="-1,DRONE60"'},
   "del NIGHTSTAR": {cmd:'mNPr4TfWpeAcNhH0d10bHi16w40x0sLdLoD0oMPRES="-1,NIGHTSTAR"'}
+};
+const LEGACY = {
+  "wipe GIMBAL24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="-1,GIMBAL24"', hint:'Legacy — now CINE24'},
+  "wipe STEADY24": {cmd:'mVr4Tp24e0fWhH0cLd10bMi1M1s180w55x0sLdLoMPRES="-1,STEADY24"', hint:'Legacy — now CINE24'}
 };
 const names = Object.keys(PRESETS);
 const box = document.getElementById('qrcode');
@@ -65,25 +75,29 @@ function qrPx() {
 
 function show(name) {
   current = name;
-  const p = PRESETS[name];
+  const p = PRESETS[name] || LEGACY[name];
   const px = qrPx();
   document.getElementById('label').textContent = name + (p.hint ? ' — ' + p.hint : '');
   document.getElementById('cmd').textContent = p.cmd;
-  document.querySelectorAll('#btns button').forEach(b => b.setAttribute('aria-pressed', b.dataset.name === name ? 'true' : 'false'));
+  document.querySelectorAll('button[data-name]').forEach(b => b.setAttribute('aria-pressed', b.dataset.name === name ? 'true' : 'false'));
   box.replaceChildren();
   box.style.width = px + 'px';
   box.style.height = px + 'px';
   new QRCode(box, {text: p.cmd, width: px, height: px, correctLevel: QRCode.CorrectLevel.M});
 }
 
-const row = document.getElementById('btns');
-names.forEach(name => {
-  const b = document.createElement('button');
-  b.textContent = name;
-  b.dataset.name = name;
-  b.onclick = () => show(name);
-  row.appendChild(b);
-});
+function addButtons(rowId, dict) {
+  const row = document.getElementById(rowId);
+  Object.keys(dict).forEach(name => {
+    const b = document.createElement('button');
+    b.textContent = name;
+    b.dataset.name = name;
+    b.onclick = () => show(name);
+    row.appendChild(b);
+  });
+}
+addButtons('btns', PRESETS);
+addButtons('legacy', LEGACY);
 show(current);
 window.addEventListener('resize', () => show(current));
 </script>
