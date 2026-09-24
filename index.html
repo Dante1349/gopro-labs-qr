@@ -52,13 +52,13 @@ const PRESETS = {
   "BITR300": {cmd:'*BITR=300', hint:'Permanent — 300 Mb/s; SD must keep up'},
   "MOVE60": {cmd:'mV!NoMPRES="3,MOVE60"mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLoN2tB'},
   "CINE24": {cmd:'mV!NoMPRES="4,CINE24"mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLoN2tB'},
-  "arm DRON": {cmd:'*DRON="hS2!SI5H30"*DROn="!X"', hint:'Once — runs whenever the drone mode is selected'},
-  "DRONE60": {cmd:'mV!NoMPRES="27,DRON DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1hS2', hint:'Tile name starts with DRON so the arm command runs'},
+  "flight arm": {cmd:'*DRON=""*DROn=""hS2!SI5H30!B2"ARMED"', hint:'Print this. Scan before a flight. Front blinks and shows ARMED'},
+  "DRONE60": {cmd:'mV!NoMPRES="27,DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1'},
   "NIGHTSTAR": {cmd:'mNP!NoMPRES="29,NIGHTSTAR"mNPr4TfWpeAcNhH0d10bHi16w40x0sLoN2oD0'},
   "del MOVE60": {cmd:'mV!NoMPRES="-1,MOVE60"mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLoN2tB'},
   "del CINE24": {cmd:'mV!NoMPRES="-1,CINE24"mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLoN2tB'},
-  "del DRONE60": {cmd:'mV!NoMPRES="-1,DRON DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1hS2'},
-  "del old DRONE60": {cmd:'mV!NoMPRES="-1,DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1hS2', hint:'Previous name, before the DRON macro'},
+  "del DRONE60": {cmd:'mV!NoMPRES="-1,DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1'},
+  "del DRON tile": {cmd:'mV!NoMPRES="-1,DRON DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1', hint:'Only if that auto tile was created'},
   "del NIGHTSTAR": {cmd:'mNP!NoMPRES="-1,NIGHTSTAR"mNPr4TfWpeAcNhH0d10bHi16w40x0sLoN2oD0'}
 };
 const LEGACY = {
