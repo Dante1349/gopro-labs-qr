@@ -24,14 +24,14 @@ details ol{margin:.35rem 0 0;padding-left:1.2rem}
 <script src="https://gopro.github.io/labs/qrcodeborder.js"></script>
 </head><body>
 <h1>Mission 1 Pro — scan one QR</h1>
-<p class="hint">Rear LCD on. <strong>Delete</strong> Photo/Lapse MOVE60 first, swipe to factory <strong>Video</strong>, then scan. Mission 1 uses <code>oMPRES</code> then <code>mV</code> (not GP2 <code>$PRES</code>). Order: TEST Labs → NR1 → BITR300 → reboot → installs. <a href="https://gopro.github.io/labs/control/set/?cmd=%22$FEAT=4%22">Official test QR</a> if every scan says timecode.</p>
+<p class="hint"><strong>Do not</strong> create MOVE60 with a Labs name QR — that became 12MP Super Photo. On the camera: <strong>Manage Modes → Delete</strong> the Super Photo MOVE60 → <strong>+</strong> → name MOVE60 → type <strong>Video</strong> (not Photo). Stay on that tile, then scan MOVE60 (settings only). Same for CINE24 / DRONE60. Order: TEST Labs → NR1 → BITR300 → reboot → settings. <a href="https://gopro.github.io/labs/control/set/?cmd=%22$FEAT=4%22">Official test QR</a> if every scan says timecode.</p>
 <p class="row" id="btns"></p>
 <div id="label"></div>
 <div id="stage"><div id="qrcode"></div></div>
 <p id="cmd"></p>
 <details>
 <summary>Wipe leftover GIMBAL24 / STEADY24</summary>
-<p>Those names are gone — use <strong>CINE24</strong>. Only scan these if the old custom modes are still on the camera. Prefer Manage Modes → Delete.</p>
+<p>Those names are gone — use <strong>CINE24</strong>. Prefer Manage Modes → Delete. These QRs only if the old custom modes are still on the camera.</p>
 <p class="row" id="legacy"></p>
 </details>
 <details>
@@ -39,7 +39,7 @@ details ol{margin:.35rem 0 0;padding-left:1.2rem}
 <p>Stock Mission 1 treats a failed QR as Quik time-sync. Labs did not read it.</p>
 <ol>
 <li>Rear <strong>LCD on</strong> (not the front screen only).</li>
-<li>Swipe to a <strong>Video</strong> Mode — not Photo / Nightlapse Photo.</li>
+<li>Stay on the custom <strong>Video</strong> Mode you just created — not Photo / Super Photo.</li>
 <li>Success is a <strong>checkmark</strong>. Tap <strong>TEST Labs</strong> first.</li>
 <li>If TEST also shows timecode: reinstall Labs — <a href="https://gopro.github.io/labs/">gopro.github.io/labs</a>.</li>
 <li>Do <strong>not Apply to All</strong> after Labs QRs.</li>
@@ -50,18 +50,18 @@ const PRESETS = {
   "TEST Labs": {cmd:'$FEAT=4', hint:'Shows Labs features 4s — if timecode, Labs is not installed'},
   "NR1": {cmd:'*NR01=1', hint:'Permanent — NR 1/100, grade chroma in Resolve'},
   "BITR300": {cmd:'*BITR=300', hint:'Permanent — 300 Mb/s; SD must keep up'},
-  "MOVE60": {cmd:'oMPRES="3,MOVE60"mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLoN2tB'},
-  "CINE24": {cmd:'oMPRES="4,CINE24"mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLoN2tB'},
-  "DRONE60": {cmd:'oMPRES="27,DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1'},
-  "NIGHTSTAR": {cmd:'oMPRES="29,NIGHTSTAR"mNPr4TfWpeAcNhH0d10bHi16w40x0sLoN2oD0'},
-  "del MOVE60": {cmd:'oMPRES="-1,MOVE60"mVr4Tp60e0fWhH0cLd10bMi8bRw55x0sLoN2tB'},
-  "del CINE24": {cmd:'oMPRES="-1,CINE24"mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLoN2tB'},
-  "del DRONE60": {cmd:'oMPRES="-1,DRONE60"mVr4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1'},
-  "del NIGHTSTAR": {cmd:'oMPRES="-1,NIGHTSTAR"mNPr4TfWpeAcNhH0d10bHi16w40x0sLoN2oD0'}
+  "MOVE60": {cmd:'r4Tp60e0fWhH0cLd10bMi8bRw55x0sLoN2tB', hint:'Settings only — tile must already be Video'},
+  "CINE24": {cmd:'r4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLoN2tB', hint:'Settings only — tile must already be Video'},
+  "DRONE60": {cmd:'r4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1', hint:'Settings only — tile must already be Video'},
+  "NIGHTSTAR": {cmd:'r4TfWpeAcNhH0d10bHi16w40x0sLoN2oD0', hint:'Settings only — create as Nightlapse Photo first'},
+  "del MOVE60": {cmd:'oMPRES="-1,MOVE60"r4Tp60e0fWhH0cLd10bMi8bRw55x0sLoN2tB', hint:'Or Manage Modes → Delete'},
+  "del CINE24": {cmd:'oMPRES="-1,CINE24"r4Tp24e0fLhH0cLd10bMi1M1s180w55x0sLoN2tB'},
+  "del DRONE60": {cmd:'oMPRES="-1,DRONE60"r4Tp60e0fWhH0cLd10bMi1M1bRw55x0sLoN2tBg1'},
+  "del NIGHTSTAR": {cmd:'oMPRES="-1,NIGHTSTAR"r4TfWpeAcNhH0d10bHi16w40x0sLoN2oD0'}
 };
 const LEGACY = {
-  "wipe GIMBAL24": {cmd:'oMPRES="-1,GIMBAL24"mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sL', hint:'Legacy — now CINE24'},
-  "wipe STEADY24": {cmd:'oMPRES="-1,STEADY24"mVr4Tp24e0fLhH0cLd10bMi1M1s180w55x0sL', hint:'Legacy — now CINE24'}
+  "wipe GIMBAL24": {cmd:'oMPRES="-1,GIMBAL24"r4Tp24e0fLhH0cLd10bMi1M1s180w55x0sL', hint:'Legacy — now CINE24'},
+  "wipe STEADY24": {cmd:'oMPRES="-1,STEADY24"r4Tp24e0fLhH0cLd10bMi1M1s180w55x0sL', hint:'Legacy — now CINE24'}
 };
 const names = Object.keys(PRESETS);
 const box = document.getElementById('qrcode');
